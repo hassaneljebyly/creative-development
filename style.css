@@ -1,0 +1,50 @@
+:root {
+  --clr-primary: white;
+  --clr-secondary: black;
+  --body-background-color: var(--clr-primary);
+  --body-text-color: var(--clr-secondary);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-background-color: var(--clr-secondary);
+    --body-text-color: var(--clr-primary);
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5em;
+  min-height: 100dvh;
+  font-family: Roboto, sans-serif;
+  background-color: var(--body-background-color);
+}
+
+a {
+  --_primary-color: var(--body-text-color);
+  --_underline-width: 0%;
+  color: var(--_primary-color);
+  text-decoration: none;
+  display: block;
+  position: relative;
+  font-size: 2rem;
+  font-style: italic;
+}
+
+a:hover {
+  --_underline-width: 100%;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: var(--_underline-width);
+  background-color: var(--_primary-color);
+  transition: all 250ms ease-in-out;
+}
